@@ -5,14 +5,14 @@ import { Button, Card, CardContent, Typography } from "@mui/material";
 import getQuotes from "./getQuotes";
 
 function App() {
-  const [state, setState] = useState({
+  const [stateof, setStateof] = useState({
     quote: "",
     author: "",
   });
 
   const handle = () => {
     getQuotes().then((data) => {
-      setState({
+      setStateof({
         quote: data[0].quote,
         author: data[0].author,
       });
@@ -23,9 +23,26 @@ function App() {
       <Typography variant="h2">Random Quote Generator</Typography>
       <Card className="card">
         <CardContent>
-          <Typography variant="h5">{state.quote}</Typography>
+          <Typography variant="h5">{stateof.quote}</Typography>
           <Typography className="margin-top" color="textSecondary">
-            {state.author}
+            {stateof.author}
+          </Typography>
+          <hr />
+          <Button
+            className="margin-top"
+            color="primary"
+            variant="outlined"
+            onClick={handle}
+          >
+            Click for Quotes
+          </Button>
+        </CardContent>
+      </Card>
+      <Card className="card">
+        <CardContent>
+          <Typography variant="h5">{stateof.quote}</Typography>
+          <Typography className="margin-top" color="textSecondary">
+            {stateof.author}
           </Typography>
           <hr />
           <Button
